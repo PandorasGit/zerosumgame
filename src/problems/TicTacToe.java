@@ -34,4 +34,31 @@ public class TicTacToe implements Game<char[][], int[]>{
             }
         }
     }
+
+
+    public char[][] execute(int[] position, char[][] board) {
+        if(turn == Marks.X){
+            board[position[0]][position[1]] = Marks.X.toString().charAt(0);
+        } else {
+            board[position[0]][position[1]] = Marks.O.toString().charAt(0);
+        }
+        marked[position[0]][position[1]] = true;
+        switchTurn();
+        return board;
+    }
+
+    public char[][] undo(int[] position, char[][] board) {
+        board[position[0]][position[1]] = ' ';
+        marked[position[0]][position[1]] = false;
+        switchTurn();
+        return board;
+    }
+
+    private void switchTurn() {
+        if(turn == Marks.X){
+            turn = Marks.O;
+        } else {
+            turn = Marks.X;
+        }
+    }
 }
