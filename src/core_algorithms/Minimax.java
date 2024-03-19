@@ -1,5 +1,7 @@
 package core_algorithms;
 
+import problems.Game;
+
 public class Minimax<S, A> {
     private final Game<S, A> game;
     private final boolean pruning;
@@ -24,7 +26,7 @@ public class Minimax<S, A> {
         } else {
             for(A action : game.actions(state)){
                 S newState = game.execute(action, state);
-                Best<A> min = minValue(game.excute(action,state));
+                Best<A> min = minValue(game.execute(action,state));
                 if(min.value() > maxValue){
                     maxValue = min.value();
                     maxAction = action;
