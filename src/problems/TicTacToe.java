@@ -156,6 +156,10 @@ public class TicTacToe implements Game<char[][], int[]>{
         return results;
     }
 
+    public char[][] getBoard() {
+        return board;
+    }
+
     public String print(char[][] board){
         StringBuilder result = new StringBuilder();
 
