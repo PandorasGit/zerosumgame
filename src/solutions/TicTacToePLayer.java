@@ -2,7 +2,7 @@ package solutions;
 
 public class TicTacToePLayer {
 //TODO
-    
+
     // while(not terminal)
         // Print current board
         // Let Human Player Input (ROW, COLUMN)
