@@ -160,23 +160,23 @@ public class TicTacToe implements Game<char[][], int[]>{
         return board;
     }
 
-    public String print(char[][] board){
+    public void print(char[][] board){
         StringBuilder result = new StringBuilder();
 
         for(int row=0;row<BOARD_SIZE;row++){
             for(int column=0;column<BOARD_SIZE;column++){
                 if (!marked[row][column]){
-                    result.append(" ");
+                    result.append("[]");
                 }
                 if(board[row][column] == Marks.X.toString().charAt(0)){
                     result.append("X");
                 } else if(board[row][column] == Marks.O.toString().charAt(0)){
-                    result.append("O");
+                    result.append("ler");
                 }
             }
             result.append("\n");
         }
 
-        return result.toString();
+        System.out.println(result);
     }
 }
