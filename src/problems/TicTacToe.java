@@ -76,10 +76,12 @@ public class TicTacToe implements Game<char[][], int[]>{
         for(int row=0;row<BOARD_SIZE; row++){
             int rowSum =0;
             for(int column=0; column<BOARD_SIZE;column++){
-                if(board[row][column]==Marks.X.toString().charAt(0)){
-                    rowSum++;
-                } else if(board[row][column]==Marks.O.toString().charAt(0)){
-                    rowSum--;
+                if (marked[row][column]){
+                    if(board[row][column]==Marks.X.toString().charAt(0)){
+                        rowSum++;
+                    } else {
+                        rowSum--;
+                    }
                 }
             }
             if (rowSum==BOARD_SIZE){
@@ -96,10 +98,12 @@ public class TicTacToe implements Game<char[][], int[]>{
         for(int column=0; column<BOARD_SIZE; column++){
             int colSum = 0;
             for(int row=0;row<BOARD_SIZE; row++){
-                if(board[row][column]==Marks.X.toString().charAt(0)){
-                    colSum++;
-                } else if(board[row][column]==Marks.O.toString().charAt(0)){
-                    colSum--;
+                if (marked[row][column]){
+                    if(board[row][column]==Marks.X.toString().charAt(0)){
+                        colSum++;
+                    } else {
+                        colSum--;
+                    }
                 }
             }
             if (colSum==BOARD_SIZE){
@@ -112,10 +116,12 @@ public class TicTacToe implements Game<char[][], int[]>{
         int diaSum =0;
 
         for(int d=0; d<BOARD_SIZE; d++){
-            if(board[d][d]==Marks.X.toString().charAt(0)){
-                diaSum++;
-            } else if (board[d][d]==Marks.O.toString().charAt(0)) {
-                diaSum--;
+            if (marked[d][d]){
+                if(board[d][d]==Marks.X.toString().charAt(0)){
+                    diaSum++;
+                } else {
+                    diaSum--;
+                }
             }
         }
         if (diaSum == BOARD_SIZE){
@@ -126,10 +132,12 @@ public class TicTacToe implements Game<char[][], int[]>{
 
         diaSum =0;
         for (int d=0;d<BOARD_SIZE;d++){
-            if(board[d][BOARD_SIZE-1-d]==Marks.X.toString().charAt(0)){
-                diaSum++;
-            } else if (board[d][BOARD_SIZE-1-d]==Marks.O.toString().charAt(0)) {
-                diaSum--;
+            if (marked[d][BOARD_SIZE-1-d]) {
+                if (board[d][BOARD_SIZE - 1 - d] == Marks.X.toString().charAt(0)) {
+                    diaSum++;
+                } else if (board[d][BOARD_SIZE - 1 - d] == Marks.O.toString().charAt(0)) {
+                    diaSum--;
+                }
             }
         }
         if (diaSum == BOARD_SIZE){
@@ -167,11 +175,10 @@ public class TicTacToe implements Game<char[][], int[]>{
             for(int column=0;column<BOARD_SIZE;column++){
                 if (!marked[row][column]){
                     result.append("[]");
-                }
-                if(board[row][column] == Marks.X.toString().charAt(0)){
+                } else if(board[row][column] == Marks.X.toString().charAt(0)){
                     result.append("X");
-                } else if(board[row][column] == Marks.O.toString().charAt(0)){
-                    result.append("ler");
+                } else {
+                    result.append("O");
                 }
             }
             result.append("\n");
