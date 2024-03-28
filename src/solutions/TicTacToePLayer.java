@@ -21,16 +21,15 @@ public class TicTacToePLayer extends Minimax<char[][], int[]>{
     }
 
     public static void main(String[] args) {
-        TicTacToe game = new TicTacToe(3, TicTacToe.Marks.O);
-        TicTacToePLayer t = new TicTacToePLayer(game, false);
-        t.search();
+        TicTacToe game = new TicTacToe(4, TicTacToe.Marks.O);
+        TicTacToePLayer t = new TicTacToePLayer(game, true);
+        t.search(game, true);
     }
 
-    public void search() {
+    public void search(TicTacToe game, Boolean pruning) {
         System.out.println("Let's play Tic Tac Toe! It is your turn!\n");
         Scanner scanner = new Scanner(System.in);
-        TicTacToe game = new TicTacToe(3, TicTacToe.Marks.O);
-        Minimax<char[][], int[]> minimax = new Minimax<char[][], int[]>(game, false);
+        Minimax<char[][], int[]> minimax = new Minimax<char[][], int[]>(game, pruning);
         while (!game.isTerminal(game.getBoard())){
             int[] playerMove = new int[2];
 

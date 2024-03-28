@@ -46,6 +46,7 @@ public class TicTacToe implements Game<char[][], int[]>{
 
 
     public char[][] execute(int[] position, char[][] board) {
+        print(board);
         if(turn == Marks.X){
             board[position[0]][position[1]] = Marks.X.toString().charAt(0);
         } else {
