@@ -26,16 +26,16 @@ public class Minimax<S, A> {
         } else {
             for(A action : game.actions(state)){
                 S newState = game.execute(action, state);
-                Best<A> min = minValue(game.execute(action,state));
+                Best<A> min = minValue(newState);
                 if(min.value() > maxValue){
                     maxValue = min.value();
                     maxAction = action;
                 }
-                game.undo(action, state);
+                game.undo(action, newState);
             }
 
         }
-        return new Best<A> (maxValue, maxAction);
+        return new Best<> (maxValue, maxAction);
     }
 
     public Best<A> minValue(S state){
